@@ -76,3 +76,50 @@ class Paragraph:
             next_word_type = choice(current_follower_types)
             next_word = choice(self.word_list.all_types[next_word_type])
             self.sentence.add_word(next_word)
+
+
+def microphone_test_example():
+    simple_grammar_rules = {
+        "noun": ["conjunction", "verb", "preposition"],
+        "conjunction": ["noun", "adjective", "preposition"],
+        "verb": ["conjunction", "noun", "adjective", "preposition"],
+        "adjective": ["noun"],
+        "preposition": ["noun", "adjective"],
+    }
+
+    microphone_test_words = [
+        Word("sausages", "noun"), 
+        Word("potatoes", "noun"),
+        Word("marmelades", "noun"),
+        Word("bubbles", "noun"),
+        Word("jelly", "noun"),
+        Word("bacon", "noun"),
+        Word("pepper", "noun"),
+        Word("seashells", "noun"),
+        Word("shores", "noun"),
+        Word("popping", "verb"),
+        Word("kicking", "verb"),
+        Word("ceasing", "verb"),
+        Word("joking", "verb"),
+        Word("zapping", "verb"),
+        Word("sizzling", "verb"),
+        Word("quiet", "adjective"),
+        Word("six", "adjective"),
+        Word("black", "adjective"),
+        Word("dark", "adjective"),
+        Word("pampered", "adjective"),
+        Word("loud", "adjective"),
+        Word("and", "conjunction"),
+        Word("after", "conjunction"),
+        Word("but", "conjunction"),
+        Word("at", "preposition"),
+        Word("except", "preposition"),
+        Word("as", "preposition"),
+        Word("with", "preposition"),
+    ]
+
+    paragraph = Paragraph(simple_grammar_rules, microphone_test_words, length=100, random_seed=0)
+    print(paragraph)
+
+if __name__ == "__main__":
+    microphone_test_example()
